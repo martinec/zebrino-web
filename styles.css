@@ -1,0 +1,234 @@
+/* zebrino.app: editorial, ink on paper, black, gray and white only. No framework. */
+
+/* Fonts are served from zebrino.app itself (no third-party requests). SIL Open Font
+   License 1.1, see fonts/OFL-*.txt. Inter Tight and JetBrains Mono are variable fonts. */
+@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/instrument-serif.woff2) format('woff2'); }
+@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/instrument-serif-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(fonts/inter-tight.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url(fonts/jetbrains-mono.woff2) format('woff2'); }
+
+:root {
+  --paper: #f3f1ec;
+  --paper-2: #e9e6df;
+  --ink: #0e0e0c;
+  --ink-2: #4a4944;
+  --ink-3: #8a877e;
+  --rule: #d6d2c8;
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --sans: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --wrap: 1180px;
+  --gutter: clamp(20px, 4vw, 48px);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 18px/1.55 var(--sans);
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink-2); text-decoration-thickness: 2px; }
+img, svg { display: block; max-width: 100%; }
+::selection { background: var(--ink); color: var(--paper); }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+.label {
+  font: 500 12px/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* ------------------------------------------------------------ top bar */
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 22px/1 var(--sans);
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+.wordmark img { width: 30px; height: 30px; }
+.bar nav { display: flex; gap: 28px; font-size: 15px; }
+.bar nav a { text-decoration: none; color: var(--ink-2); }
+.bar nav a:hover { color: var(--ink); }
+
+/* ------------------------------------------------------------ hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(48px, 9vw, 120px) 0 clamp(40px, 7vw, 96px);
+}
+.hero h1 {
+  margin: 18px 0 28px;
+  font: 400 clamp(48px, 6.6vw, 104px)/0.94 var(--serif);
+  letter-spacing: -0.035em;
+}
+.hero h1 em { font-style: italic; color: var(--ink-2); }
+.hero p.lede { max-width: 30ch; margin: 0 0 36px; font-size: clamp(19px, 1.6vw, 22px); color: var(--ink-2); }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px 16px 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.cta:hover { color: var(--paper); transform: translateY(-2px); }
+.cta img { width: 26px; height: 26px; border-radius: 50%; box-shadow: 0 0 0 1.5px #6b6963; } /* charcoal logo on the black button */
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; }
+
+/* Two watches, slightly overlapped, like product shots on a table. */
+.watches { position: relative; aspect-ratio: 1 / 1; max-width: 520px; justify-self: end; width: 100%; }
+.watch {
+  position: absolute;
+  border-radius: 50%;
+  padding: 3.2%;
+  background: radial-gradient(circle at 30% 25%, #3a3a37, #121211 60%);
+  box-shadow: 0 1px 0 #555 inset, 0 30px 60px -20px rgba(14, 14, 12, 0.45), 0 8px 18px rgba(14, 14, 12, 0.18);
+}
+.watch img { border-radius: 50%; width: 100%; height: auto; }
+.watch.front { width: 68%; right: 0; bottom: 0; z-index: 2; }
+.watch.back { width: 52%; left: 0; top: 0; opacity: 0.96; }
+
+/* ------------------------------------------------------------ real barcode band */
+
+.scanband { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: #fff; }
+.scanband .wrap { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; padding-top: 40px; padding-bottom: 32px; }
+.scanband svg { width: 100%; height: clamp(90px, 14vw, 170px); }
+.scanband .caption { max-width: 22ch; font-size: 15px; color: var(--ink-2); }
+.scanband .digits { margin-top: 10px; font: 500 13px/1 var(--mono); letter-spacing: 0.32em; color: var(--ink-3); }
+
+/* ------------------------------------------------------------ numbered features */
+
+.section { padding: clamp(64px, 10vw, 140px) 0 0; }
+.section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: end; margin-bottom: 40px; }
+.section-head h2 { margin: 0; font: 400 clamp(40px, 5.5vw, 72px)/0.98 var(--serif); letter-spacing: -0.03em; }
+
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 44px 0;
+  border-top: 1px solid var(--rule);
+}
+.feature:last-child { border-bottom: 1px solid var(--rule); }
+.feature .num { display: block; margin-bottom: 18px; font: 500 13px/1 var(--mono); letter-spacing: 0.08em; color: var(--ink-3); }
+.feature h3 { margin: 0 0 12px; font: 600 clamp(24px, 2.4vw, 32px)/1.1 var(--sans); letter-spacing: -0.025em; }
+.feature p { margin: 0; color: var(--ink-2); max-width: 46ch; }
+.feature figure { margin: 0; justify-self: end; width: min(100%, 300px); }
+.feature figure .watch { position: relative; width: 100%; }
+.feature .sources { justify-self: end; margin: 0; padding: 0; list-style: none; line-height: 2.4; text-align: right; }
+
+/* ------------------------------------------------------------ formats strip */
+
+.formats { overflow: hidden; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: clamp(64px, 10vw, 140px); }
+.formats .track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.formats ul { display: flex; margin: 0; padding: 0; list-style: none; }
+.formats li { padding: 22px 34px; font: 400 clamp(28px, 3.4vw, 44px)/1 var(--serif); white-space: nowrap; border-right: 1px solid var(--rule); }
+.formats li:nth-child(even) { font-style: italic; color: var(--ink-2); }
+@keyframes slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .formats .track { animation: none; flex-wrap: wrap; width: auto; }
+  .formats ul[aria-hidden='true'] { display: none; }
+}
+
+/* ------------------------------------------------------------ privacy */
+
+.privacy { background: var(--ink); color: var(--paper); margin-top: clamp(64px, 10vw, 140px); }
+.privacy .wrap { padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(64px, 9vw, 120px); }
+.privacy .label { color: #8f8c84; }
+.privacy h2 { margin: 18px 0 56px; max-width: 16ch; font: 400 clamp(44px, 6.5vw, 92px)/0.96 var(--serif); letter-spacing: -0.035em; }
+.privacy h2 em { color: #a9a59b; }
+.privacy dl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 0; border-top: 1px solid #2c2b28; }
+.privacy dl > div { padding: 24px 24px 0 0; }
+.privacy dt { font: 600 18px/1.3 var(--sans); margin-bottom: 8px; }
+.privacy dd { margin: 0; color: #b4b0a6; font-size: 15px; }
+.privacy .more { margin-top: 48px; font-size: 16px; }
+.privacy a:hover { color: #fff; }
+
+/* ------------------------------------------------------------ faq */
+
+.faq { max-width: 860px; }
+.faq details { border-top: 1px solid var(--rule); }
+.faq details:last-child { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0;
+  cursor: pointer;
+  list-style: none;
+  font: 500 clamp(19px, 1.7vw, 22px)/1.3 var(--sans);
+  letter-spacing: -0.01em;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font: 300 28px/1 var(--sans); color: var(--ink-3); transition: transform 0.2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin: -8px 0 28px; max-width: 62ch; color: var(--ink-2); }
+
+/* ------------------------------------------------------------ footer */
+
+footer.site { margin-top: clamp(64px, 10vw, 140px); border-top: 1px solid var(--rule); }
+footer.site .wrap { padding-top: 40px; padding-bottom: 48px; }
+.bigmark { font: 400 clamp(88px, 21vw, 300px)/0.8 var(--serif); letter-spacing: -0.05em; margin: 0 0 40px -0.04em; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; font-size: 15px; color: var(--ink-2); }
+.foot nav { display: flex; flex-wrap: wrap; gap: 24px; }
+
+/* ------------------------------------------------------------ privacy page */
+
+.doc { max-width: 720px; padding: clamp(40px, 7vw, 96px) 0 0; }
+.doc h1 { font: 400 clamp(48px, 7vw, 84px)/0.95 var(--serif); letter-spacing: -0.035em; margin: 18px 0 24px; }
+.doc h2 { font: 600 22px/1.25 var(--sans); letter-spacing: -0.015em; margin: 48px 0 12px; }
+.doc p, .doc li { color: var(--ink-2); }
+.doc ul { padding-left: 1.1em; }
+.doc li { margin: 8px 0; }
+.doc strong { color: var(--ink); }
+
+/* ------------------------------------------------------------ small screens */
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .watches { justify-self: center; max-width: 440px; }
+  .section-head { grid-template-columns: 1fr; gap: 16px; }
+  .feature { grid-template-columns: 1fr 240px; }
+  .privacy dl { grid-template-columns: 1fr 1fr; }
+  .scanband .wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .bar nav { display: none; }
+  .feature { grid-template-columns: 1fr; gap: 20px; padding: 36px 0; }
+  .feature figure, .feature .sources { justify-self: start; width: min(100%, 260px); text-align: left; }
+  .privacy dl { grid-template-columns: 1fr; }
+}

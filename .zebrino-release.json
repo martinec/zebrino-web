@@ -1,0 +1,23 @@
+{
+  "source": "web/ of the Zebrino project",
+  "files": [
+    ".nojekyll",
+    "CNAME",
+    "assets/1-list.webp",
+    "assets/2-card.webp",
+    "assets/3-fullscreen.webp",
+    "assets/4-widget.webp",
+    "assets/5-shortcut-card.webp",
+    "assets/icon.png",
+    "fonts/OFL-InstrumentSerif.txt",
+    "fonts/OFL-InterTight.txt",
+    "fonts/OFL-JetBrainsMono.txt",
+    "fonts/instrument-serif-italic.woff2",
+    "fonts/instrument-serif.woff2",
+    "fonts/inter-tight.woff2",
+    "fonts/jetbrains-mono.woff2",
+    "index.html",
+    "privacy/index.html",
+    "styles.css"
+  ]
+}
