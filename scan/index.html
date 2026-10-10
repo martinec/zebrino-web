@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scan a card | Zebrino</title>
+<meta name="description" content="Scan your loyalty, library and membership cards with your phone's camera and add them to Zebrino. Read on your phone, nothing uploaded.">
+<meta name="theme-color" content="#f3f1ec">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preload" href="../fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="bar">
+    <a class="wordmark" href="../"><img src="../assets/icon.png" alt="">zebrino</a>
+    <nav aria-label="Main">
+      <a href="../#how">How it works</a>
+      <a href="../#faq">Questions</a>
+    </nav>
+  </header>
+
+  <main class="doc scan">
+    <span class="label">Scan a card</span>
+    <h1>Scan your cards with your phone</h1>
+    <p>Point your phone's camera at a card's barcode or QR code, check what was read, then copy the result into Zebrino. The barcode is read here, on your phone: nothing is uploaded or kept.</p>
+
+    <section class="capture" aria-label="Scanner">
+      <div id="viewer" class="viewer" hidden>
+        <video id="video" playsinline muted></video>
+        <button id="stop" type="button" class="pill">Stop</button>
+      </div>
+      <div class="scan-actions">
+        <button id="start" type="button" class="cta">Start the camera</button>
+        <label class="pill" for="photo">Take or choose a photo</label>
+        <input id="photo" type="file" accept="image/*" capture="environment" hidden>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="cards" hidden>
+      <h2>Scanned cards</h2>
+      <p>Give each card a name and check its number: the number printed on the card can differ from what its barcode holds.</p>
+      <ol id="list" class="scanned-list"></ol>
+    </section>
+
+    <section id="handoff" hidden>
+      <h2>Add them to Zebrino</h2>
+      <ol>
+        <li>Tap <strong>Copy for Zebrino</strong>.</li>
+        <li>In the Zepp app, open Profile › your watch › App settings › Zebrino.</li>
+        <li>Tap <strong>Import</strong> › <strong>Scan with your phone's camera</strong>, paste, check and import.</li>
+      </ol>
+      <textarea id="links" class="links" readonly rows="4" aria-label="Cards for Zebrino"></textarea>
+      <button id="copy" type="button" class="cta">Copy for Zebrino</button>
+    </section>
+
+    <h2>Privacy</h2>
+    <p>The camera is used only while you scan, and stops as soon as a barcode is read. Images are read on your phone and never leave it. Scanned cards disappear when you close this page, unless you copy them. This page loads nothing but its own files. <a href="../privacy/">Privacy policy</a> · <a href="LICENSES.txt">Open-source licences</a></p>
+  </main>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <span>Zebrino <!-- version -->1.1.0<!-- /version --> for Zepp OS · © 2026</span>
+      <nav aria-label="Footer">
+        <a href="../">Home</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="mailto:support@zebrino.app">support@zebrino.app</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="scan.js"></script>
+</body>
+</html>

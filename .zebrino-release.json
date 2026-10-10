@@ -18,6 +18,10 @@
     "fonts/jetbrains-mono.woff2",
     "index.html",
     "privacy/index.html",
+    "scan/LICENSES.txt",
+    "scan/index.html",
+    "scan/scan.js",
+    "scan/zxing_reader.wasm",
     "styles.css"
   ]
 }
