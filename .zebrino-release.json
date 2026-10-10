@@ -22,6 +22,7 @@
     "scan/index.html",
     "scan/scan.js",
     "scan/zxing_reader.wasm",
+    "share/index.html",
     "styles.css"
   ]
 }

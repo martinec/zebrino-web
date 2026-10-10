@@ -236,6 +236,8 @@ footer.site .wrap { padding-top: 40px; padding-bottom: 48px; }
 .viewer .pill { position: absolute; right: 12px; bottom: 12px; background: var(--paper); }
 .scan-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .status { min-height: 1.55em; color: var(--ink-2); }
+.elsewhere { padding: 16px 0; border-top: 1px solid var(--rule); }
+.elsewhere .links { margin: 12px 0; }
 .scanned-list { margin: 0; padding: 0; list-style: none; }
 .scanned { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; padding: 20px 0; border-top: 1px solid var(--rule); }
 .scanned:last-child { border-bottom: 1px solid var(--rule); }

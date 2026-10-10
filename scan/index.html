@@ -38,6 +38,11 @@
         <input id="photo" type="file" accept="image/*" capture="environment" hidden>
       </div>
       <p id="status" class="status" role="status" aria-live="polite"></p>
+      <div id="elsewhere" class="elsewhere" hidden>
+        <p>The camera can't be used in this window: apps such as Zepp open pages in their own viewer, without camera access. Open this page in your phone's browser (Chrome, Safari) to scan with the camera, or take or choose a photo here.</p>
+        <input id="address" class="links" type="text" readonly aria-label="Address of this page">
+        <button id="copy-address" type="button" class="pill">Copy the page link</button>
+      </div>
     </section>
 
     <section id="cards" hidden>
